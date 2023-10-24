@@ -1,0 +1,35 @@
+.student__form-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 90vh;
+  margin: 2rem 0;
+}
+
+.student__form-container h1 {
+  color: var(--primary-color);
+}
+
+.student__form {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  min-height: 200px;
+  width: 400px;
+  padding: 2rem;
+}
+
+.student__form input {
+  margin: 1rem 0;
+  padding: 1rem;
+}
+
+.form__radio-input {
+  display: flex;
+  align-items: center;
+}
+
+.form__radio-input label {
+  margin: 0 1rem;
+}

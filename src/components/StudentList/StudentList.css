@@ -1,0 +1,23 @@
+.students__list {
+  margin-top: 2rem;
+  border: 1px solid;
+  border-collapse: collapse;
+}
+
+.students__list {
+  width: 86vw;
+}
+
+.students__list thead td {
+  font-size: 1.3rem;
+}
+
+.students__list td {
+  border: 1px solid;
+  padding: 1rem 2rem;
+}
+
+.students__list tbody td {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}

@@ -1,0 +1,12 @@
+.students__list-container {
+  margin: 2rem 5rem;
+  min-height: 90vh;
+}
+
+.students__list-header {
+  display: flex;
+}
+
+.students__list-header h1 {
+  color: var(--primary-color);
+}

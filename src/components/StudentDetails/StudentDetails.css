@@ -1,0 +1,37 @@
+.student__details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 90vh;
+}
+
+.student__body {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 2rem;
+  min-height: 200px;
+  width: 400px;
+}
+
+.student__body h1 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.student__body p {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.delete__btn {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 0.6rem 0.8rem;
+  text-decoration: none;
+  background-color: #ff6969;
+  color: var(--text-color);
+  font-size: 1rem;
+  border: none;
+  margin-left: 2rem;
+}
