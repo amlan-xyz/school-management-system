@@ -4,7 +4,8 @@ const initialState = {
   totalStudents: 0,
   averageAttendance: 0,
   averageMarks: 0,
-  topStudent: {},
+  topStudent: "",
+  totalTeachers: 0,
 };
 
 export const schoolSlice = createSlice({
@@ -12,13 +13,19 @@ export const schoolSlice = createSlice({
   initialState,
   reducers: {
     updateSchoolStats: (state, action) => {
-      const { totalStudents, averageAttendance, averageMarks, topStudent } =
-        action.payload;
+      const {
+        totalStudents,
+        averageAttendance,
+        averageMarks,
+        topStudent,
+        totalTeachers,
+      } = action.payload;
 
       state.totalStudents = totalStudents;
       state.averageAttendance = averageAttendance;
       state.averageMarks = averageMarks;
       state.topStudent = topStudent;
+      state.totalTeachers = totalTeachers;
     },
     setTopStudent: (state, action) => {
       state.topStudent = action.payload;

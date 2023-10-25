@@ -8,10 +8,12 @@ import {
 const SchoolView = () => {
   const schoolStats = useSelector((state) => state.school);
   const students = useSelector((state) => state.students.students);
+  const { teachers } = useSelector((state) => state.teachers);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const totalStudents = students.length;
+    const totalTeachers = teachers.length;
     const totalAttendance = students.reduce(
       (sum, student) => sum + parseFloat(student.attendance),
       0
@@ -24,9 +26,11 @@ const SchoolView = () => {
     const averageMarks = totalMarks / totalStudents;
 
     const topStudent = students.reduce(
-      (prev, current) =>
-        parseFloat(current.marks) > parseFloat(prev.marks) ? current : prev,
-      ""
+      (top, current) =>
+        parseFloat(current.marks) > parseFloat(top.marks)
+          ? (top = current)
+          : top,
+      students[0]
     );
 
     dispatch(
@@ -35,10 +39,11 @@ const SchoolView = () => {
         averageAttendance,
         averageMarks,
         topStudent,
+        totalTeachers,
       })
     );
     dispatch(setTopStudent(topStudent));
-  }, [students, dispatch]);
+  }, [students, teachers, dispatch]);
 
   return (
     <div className="student__details">
@@ -47,6 +52,10 @@ const SchoolView = () => {
         <p>
           {" "}
           <b>Total Students:</b> <span>{schoolStats.totalStudents}</span>{" "}
+        </p>
+        <p>
+          {" "}
+          <b>Total Teachers:</b> <span>{schoolStats.totalTeachers}</span>{" "}
         </p>
         <p>
           {" "}
