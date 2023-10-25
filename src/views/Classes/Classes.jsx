@@ -84,6 +84,7 @@ const ClassView = () => {
         <thead>
           <td>Name</td>
           <td>Age</td>
+          <td>Class</td>
           <td>Grade</td>
           <td>Marks</td>
           <td>Attendance</td>
@@ -91,12 +92,21 @@ const ClassView = () => {
         </thead>
         <tbody>
           {sortedStudents.map((student) => {
-            const { _id, name, age, grade, marks, attendance, gender } =
-              student;
+            const {
+              _id,
+              name,
+              age,
+              grade,
+              marks,
+              attendance,
+              gender,
+              standard,
+            } = student;
             return (
               <tr key={_id}>
                 <td>{name}</td>
                 <td>{age}</td>
+                <td>{standard}</td>
                 <td>{grade}</td>
                 <td>{marks ? marks : "-"}</td>
                 <td>{attendance ? attendance : "-"}</td>
