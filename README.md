@@ -1,46 +1,47 @@
-# Getting Started with Create React App and Redux
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# [School Management System](https://school-management-system-by-amlan.vercel.app)
 
-## Available Scripts
+## [Replit](https://replit.com/@theweird0ne/reduxtoolkit-student-management) (School Management API)
+The School Management web application is a tool to help administrators to manage their students and teachers.
 
-In the project directory, you can run:
+## Features
+1. Student View: Displays a list of all students.
+2. Class View : Displays a list of studenst based on the selected filters.
+3. Teachers View : Displays a list of all the teachers.
+4. School View : Displays the school stats.
 
-### `npm start`
+## API Endpoints
+The application also exposes the following API endpoints:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. /students
+- POST: Adds a new student.
+- GET : Gets all students.
+2. /students/:id
+- PUT : Update student details
+- DELETE : Deletes a student 
+3. /teachers
+- POST: Adds a new teacher.
+- GET : Gets all teachers.
+4. /teachers/:id
+- PUT : Update teacher details
+- DELETE : Deletes a teacher 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
+To get started with the School Management web application, you can clone this repository and install the dependencies:
+```
+git clone https://github.com/theweird0ne/school-management-system.git
+cd school-management-system
+npm install
+```
+Then, you can start the development server:
 
-### `npm test`
+```
+npm start
+```
+The application will be running at http://localhost:3000
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Contributing
+Contributions are welcome! Please read the contribution guidelines: CONTRIBUTING.md for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+License
+The Inventory Management web application is licensed under the MIT License.
