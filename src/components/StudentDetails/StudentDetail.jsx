@@ -14,7 +14,7 @@ export const StudentDetail = () => {
   }
 
   const handleDelete = (id) => {
-    dispatch(deleteStudentAsync(id));
+    dispatch(deleteStudentAsync({ id }));
   };
 
   return (

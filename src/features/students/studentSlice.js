@@ -37,7 +37,7 @@ export const updateStudentAsync = createAsyncThunk(
 
 export const deleteStudentAsync = createAsyncThunk(
   "students/deleteStudentAsync",
-  async (id) => {
+  async ({ id }) => {
     const response = await axios.delete(
       `https://reduxtoolkit-student-management.theweird0ne.repl.co/students/${id}`
     );
@@ -49,16 +49,20 @@ const initialState = {
   students: [],
   status: "idle",
   error: null,
-  filter: "All",
+  standard: "All",
   sortBy: "name",
+  gender: "All",
 };
 
 export const studentsSlice = createSlice({
   name: "students",
   initialState,
   reducers: {
-    setFilter: (state, action) => {
-      state.filter = action.payload;
+    setFilterByClass: (state, action) => {
+      state.standard = action.payload;
+    },
+    setFilterByGender: (state, action) => {
+      state.gender = action.payload;
     },
     setSortBy: (state, action) => {
       state.sortBy = action.payload;
@@ -93,8 +97,8 @@ export const studentsSlice = createSlice({
     },
     [updateStudentAsync.fulfilled]: (state, action) => {
       state.status = "success";
-      const updatedStudent = action.payload;
-      const index = state.students.findIndex((s) => s.id === updatedStudent.id);
+      const { updatedStudent, id } = action.payload;
+      const index = state.students.findIndex((s) => s._id === id);
       if (index !== -1) {
         state.students[index] = updatedStudent;
       }
@@ -108,9 +112,8 @@ export const studentsSlice = createSlice({
     },
     [deleteStudentAsync.fulfilled]: (state, action) => {
       state.status = "success";
-      state.students = state.students.filter(
-        (student) => student.id !== action.payload.id
-      );
+      const { _id } = action.payload.student;
+      state.students = state.students.filter((student) => student._id !== _id);
     },
     [deleteStudentAsync.rejected]: (state, action) => {
       state.status = "error";
@@ -119,6 +122,7 @@ export const studentsSlice = createSlice({
   },
 });
 
-export const { setFilter, setSortBy } = studentsSlice.actions;
+export const { setFilterByClass, setFilterByGender, setSortBy } =
+  studentsSlice.actions;
 
 export default studentsSlice.reducer;

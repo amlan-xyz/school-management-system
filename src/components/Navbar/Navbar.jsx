@@ -8,6 +8,9 @@ export const Navbar = () => {
         <Link className="nav__link" to="/">
           Students
         </Link>
+        <Link className="nav__link" to="/teachers">
+          Teachers
+        </Link>
         <Link className="nav__link" to="/classes">
           Classes
         </Link>

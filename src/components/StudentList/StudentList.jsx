@@ -6,6 +6,7 @@ export const StudentsList = ({ students }) => {
       <thead>
         <td>Name</td>
         <td>Age</td>
+        <td>Standard</td>
         <td>Grade</td>
         <td>Marks</td>
         <td>Attendance</td>
@@ -14,11 +15,13 @@ export const StudentsList = ({ students }) => {
       </thead>
       <tbody>
         {students.map((student) => {
-          const { _id, name, age, grade, marks, attendance, gender } = student;
+          const { _id, name, age, grade, marks, attendance, gender, standard } =
+            student;
           return (
             <tr key={_id}>
               <td>{name}</td>
               <td>{age}</td>
+              <td>{standard}</td>
               <td>{grade}</td>
               <td>{marks ? marks : "-"}</td>
               <td>{attendance ? attendance : "-"}</td>

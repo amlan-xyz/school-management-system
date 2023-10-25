@@ -1,17 +1,26 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilter, setSortBy } from "../../features/students/studentSlice";
+import {
+  setFilterByClass,
+  setFilterByGender,
+  setSortBy,
+} from "../../features/students/studentSlice";
 import "./Classes.css";
 
 const ClassView = () => {
   const students = useSelector((state) => state.students.students);
-  const filter = useSelector((state) => state.students.filter);
+  const { standard, gender } = useSelector((state) => state.students);
   const sortBy = useSelector((state) => state.students.sortBy);
   const dispatch = useDispatch();
 
-  const filteredStudents = students.filter((student) => {
-    if (filter === "All") return true;
-    return student.gender === filter;
+  const studentsInClass = students.filter((student) => {
+    if (standard === "All") return true;
+    return student.standard === standard;
+  });
+
+  const filteredStudents = [...studentsInClass].filter((student) => {
+    if (gender === "All") return true;
+    return student.gender === gender;
   });
 
   const sortedStudents = [...filteredStudents].sort((a, b) => {
@@ -21,8 +30,12 @@ const ClassView = () => {
     return 0;
   });
 
-  const handleFilterChange = (e) => {
-    dispatch(setFilter(e.target.value));
+  const handleFilterChangeGender = (e) => {
+    dispatch(setFilterByGender(e.target.value));
+  };
+
+  const handleFilterChangeClass = (e) => {
+    dispatch(setFilterByClass(e.target.value));
   };
 
   const handleSortChange = (e) => {
@@ -34,8 +47,24 @@ const ClassView = () => {
       <div className="class__view-header">
         <h1>Class View</h1>
         <div className="filters">
+          <label htmlFor="filter">Filter by Class:</label>
+          <select
+            id="filter"
+            onChange={handleFilterChangeClass}
+            value={standard}
+          >
+            <option value="All">All</option>
+            <option value="IX">IX</option>
+            <option value="X">X</option>
+          </select>
+        </div>
+        <div className="filters">
           <label htmlFor="filter">Filter by Gender:</label>
-          <select id="filter" onChange={handleFilterChange} value={filter}>
+          <select
+            id="filter"
+            onChange={handleFilterChangeGender}
+            value={gender}
+          >
             <option value="All">All</option>
             <option value="Male">Boys</option>
             <option value="Female">Girls</option>

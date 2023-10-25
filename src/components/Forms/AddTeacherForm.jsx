@@ -1,49 +1,44 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
+
 import {
-  addStudentAsync,
-  updateStudentAsync,
-} from "../../features/students/studentSlice";
-import "./AddStudentForm.css";
+  addTeacherAsync,
+  updateTeacherAsync,
+} from "../../features/teachers/teachersSlice";
 
-export const StudentForm = () => {
+export const TeacherForm = () => {
   const { state } = useLocation();
-  const student = state ? state : null;
+  const teacher = state ? state : null;
 
-  const [name, setName] = useState(student ? student.name : "");
-  const [age, setAge] = useState(student ? student.age : "");
-  const [grade, setGrade] = useState(student ? student.grade : "");
-  const [attendance, setAttendance] = useState(
-    student ? student.attendance : ""
-  );
-  const [marks, setMarks] = useState(student ? student.marks : "");
-  const [gender, setGender] = useState(student ? student.gender : "");
-  const [standard, setStandard] = useState(student ? student.standard : "");
+  const [name, setName] = useState(teacher ? teacher.name : "");
+  const [gender, setGender] = useState(teacher ? teacher.gender : "");
+  const [standard, setStandard] = useState(teacher ? teacher.standard : "");
+  const [subject, setSubject] = useState(teacher ? teacher.subject : "");
+  const [contact, setContact] = useState(teacher ? teacher.contact : "");
 
   const dispatch = useDispatch();
 
   const handleSubmit = () => {
-    const newStudent = {
+    const newTeacher = {
       name,
-      age,
-      grade,
       standard,
       gender,
-      attendance,
-      marks,
+      subject,
+      contact,
     };
-    if (student) {
+    if (teacher) {
       dispatch(
-        updateStudentAsync({ id: student._id, updatedStudent: newStudent })
+        updateTeacherAsync({ id: teacher._id, updatedTeacher: newTeacher })
       );
     } else {
-      dispatch(addStudentAsync(newStudent));
+      dispatch(addTeacherAsync(newTeacher));
     }
   };
+
   return (
     <div className="student__form-container">
-      <h1>{student ? "Edit Student" : "Add Student"}</h1>
+      <h1>{teacher ? "Edit Teacher" : "Add Teacher"}</h1>
       <form action="" className="student__form">
         <input
           type="text"
@@ -53,15 +48,15 @@ export const StudentForm = () => {
         />
         <input
           type="number"
-          placeholder="Age"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
+          placeholder="Phone Number"
+          value={contact}
+          onChange={(e) => setContact(e.target.value)}
         />
         <input
           type="text"
-          placeholder="Grade"
-          value={grade}
-          onChange={(e) => setGrade(e.target.value)}
+          placeholder="Subject"
+          value={subject}
+          onChange={(e) => setSubject(e.target.value)}
         />
         <input
           type="text"
@@ -93,20 +88,8 @@ export const StudentForm = () => {
             Female
           </label>
         </div>
-        <input
-          type="text"
-          placeholder="Attendance"
-          value={attendance}
-          onChange={(e) => setAttendance(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Marks"
-          value={marks}
-          onChange={(e) => setMarks(e.target.value)}
-        />
         <button className="submit__btn" onClick={handleSubmit}>
-          {student ? "Update" : "Add"}
+          {teacher ? "Update" : "Add"}
         </button>
       </form>
     </div>
